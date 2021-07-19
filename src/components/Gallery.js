@@ -18,8 +18,6 @@ const Gallery = () => {
   const [filteredSuggestions, setFilteredSuggestions] = React.useState([])
   const [selectedSuggestion, setSelectedSuggestion] = React.useState(0)
   const [displaySuggestions, setDisplaySuggestions] = React.useState(false)
-  //variables
-  let moreData = []
 
   //accessing localstorage
   localStorage.setItem('userQuery', JSON.stringify(userQuery))
