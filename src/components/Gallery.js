@@ -44,7 +44,6 @@ const Gallery = () => {
   //when user typing, it fetches result as per input
   useEffect(() => {
     setImages([])
-    console.log(searchField)
     async function fetchSearchImageData(query) {
       await axios
         .get(
@@ -71,7 +70,6 @@ const Gallery = () => {
           `https://api.flickr.com/services/rest/?method=flickr.photos.search&api_key=${process.env.REACT_APP_FLIKER_API}&tags=${searchField}&per_page=16&page=${page}&format=json&nojsoncallback=true`,
         )
         .then((response) => {
-          console.log(page)
           setImages([...images, ...response.data.photos.photo])
         })
         .catch((error) => {
@@ -83,7 +81,6 @@ const Gallery = () => {
           `https://www.flickr.com/services/rest/?method=flickr.photos.getRecent&api_key=${process.env.REACT_APP_FLIKER_API}&per_page=16&page=${page}&format=json&nojsoncallback=true`,
         )
         .then((response) => {
-          console.log(page)
           setImages([...images, ...response.data.photos.photo])
         })
         .catch((error) => {
@@ -111,7 +108,6 @@ const Gallery = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault()
-    console.log(typeof searchField)
     let temp = JSON.parse(localStorage.getItem('userQuery'))
     if (temp.indexOf(searchField) === -1) {
       userQuery.push(searchField)
